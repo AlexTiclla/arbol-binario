@@ -287,89 +287,20 @@ class ArbolBinario:
                 queue.append(node.derecha)
         print()
     # Metodo para imprimir un arbol en consola de manera bonita
+    def print_tree(self, current_node, indent='', last=True):
+        # Metodo recursivo para imprimir un arbol de manera bonita
+        if current_node is not None:
+            print(indent, end='')
+            if last:
+                print('R----', end='')
+                indent += '     '
+            else:
+                print('L----', end='')
+                indent += '|    '
 
-    
-    def print_tree(self, root):
-        if root is None:
-            return
-    
-        nodes_queue = deque([(root, 0)])  # The second element of tuple is level
-        current_level = 0
-        level_nodes = []
-    
-        while nodes_queue:
-            node, level = nodes_queue.popleft()
-    
-            if level > current_level:
-                # Print all nodes at the current level and move to next level
-                print(' '.join(level_nodes))
-                level_nodes = []
-                current_level = level
-    
-            level_nodes.append(str(node.dato))
-    
-            if node.izquierda is not None:
-                nodes_queue.append((node.izquierda, level + 1))
-    
-            if node.derecha is not None:
-                nodes_queue.append((node.derecha, level + 1))
-    
-        # Print the remaining nodes
-        print(' '.join(level_nodes))
-# Escribe una funcion para probar el metodo de anchura
-def test_anchura():
-    arbol = ArbolBinario()
-    arbol.agregar(1)
-    arbol.agregar(2)
-    arbol.agregar(3)
-    arbol.agregar(4)
-    arbol.agregar(5)
-    arbol.agregar(6)
-    arbol.agregar(7)
-    arbol.agregar(8)
-    arbol.agregar(9)
-    arbol.agregar(10)
-    arbol.agregar(11)
-    arbol.agregar(12)
-    arbol.agregar(13)
-    arbol.agregar(14)
-    arbol.agregar(15)
-    arbol.agregar(16)
-    arbol.agregar(17)
-    arbol.agregar(18)
-    arbol.agregar(19)
-    arbol.agregar(20)
-    arbol.agregar(21)
-    arbol.agregar(22)
-    arbol.agregar(23)
-    arbol.agregar(24)
-    arbol.agregar(25)
-    arbol.agregar(26)
-    arbol.agregar(27)
-    arbol.agregar(28)
-    arbol.agregar(29)
-    arbol.agregar(30)
-    arbol.agregar(31)
-    arbol.agregar(32)
-    arbol.agregar(33)
-    arbol.agregar(34)
-    arbol.agregar(35)
-    arbol.agregar(36)
-    arbol.agregar(37)
-    arbol.agregar(38)
-    arbol.agregar(39)
-    arbol.agregar(40)
-    arbol.agregar(41)
-    arbol.agregar(42)
-    arbol.agregar(43)
-    arbol.agregar(44)
-    arbol.agregar(45)
-    arbol.agregar(46)
-    arbol.agregar(47)
-    arbol.agregar(48)
-    arbol.agregar(49)
-    arbol.agregar(50)
-    arbol.anchura()
+            print(current_node.dato)
+            self.print_tree(current_node.izquierda, indent, False)
+            self.print_tree(current_node.derecha, indent, True)
     
 
         
